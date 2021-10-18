@@ -3,7 +3,7 @@ package ru.job4j.tdd;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-//test travis
+
 public class LogFilter {
     private static List<String> filter(String file) {
         List<String> list = new ArrayList<>();
