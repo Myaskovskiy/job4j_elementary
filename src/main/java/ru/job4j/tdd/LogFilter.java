@@ -3,7 +3,11 @@ package ru.job4j.tdd;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Класс LogFilter описывает работу фильтрации лога
+ * @author V Myaskovskiy
+ * @version 1.0
+ */
 public class LogFilter {
     private static List<String> filter(String file) {
         List<String> list = new ArrayList<>();
