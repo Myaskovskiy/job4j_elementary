@@ -8,3 +8,5 @@
 - модульное тестирование
 - IDEA
 - Основы GIT
+
+[![Build Status](https://app.travis-ci.com/Myaskovskiy/job4j_elementary.svg?branch=master)](https://app.travis-ci.com/Myaskovskiy/job4j_elementary)
