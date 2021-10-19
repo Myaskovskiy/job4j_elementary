@@ -18,3 +18,8 @@ notifications:
       - slavav3077@yandex.ru
     on_success: never # default: change
     on_failure: always # default: always
+env:
+
+  global:
+
+    - CODECOV_TOKEN="2193d3cb-ea49-4257-9aae-d45c73da3df7"
