@@ -11,7 +11,7 @@ public class AttachmentSort {
                 new Attachment("name 2", 200),
                 new Attachment("name 3", 400)
         );
-        Comparator<Attachment> comparator = (o1, o2) -> o1.getSize() - o2.getSize();
+        Comparator<Attachment> comparator = (o1, o2) -> Integer.compare(o1.getSize(),o2.getSize());
         list.sort(comparator);
         System.out.println(list);
         Comparator<Attachment> comparatorName = (o1, o2) -> o1.getName().compareTo(o2.getName());
