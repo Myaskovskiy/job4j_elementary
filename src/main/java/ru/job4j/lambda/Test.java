@@ -1,5 +1,7 @@
 package ru.job4j.lambda;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 public class Test {
@@ -28,5 +30,6 @@ public class Test {
         System.out.println("test");
         System.out.println(test.check(str -> str.contains("12"), "12345"));
         System.out.println(test.check(str -> str.isEmpty(), ""));
+
     }
 }
