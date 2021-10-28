@@ -9,7 +9,7 @@ import java.util.function.*;
 public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
-        BiConsumer<Integer, String> biCon = (s, s1) -> map.put(s, s1);
+        BiConsumer<Integer, String> biCon = map::put; //(s, s1) -> map.put(s, s1);
         List<String> list = List.of("one", "two", "three", "four", "five", "six", "seven");
         int i = 1;
         for (String s : list) {
