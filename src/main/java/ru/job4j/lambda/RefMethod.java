@@ -11,14 +11,7 @@ public class RefMethod {
                 "Ivan",
                 "Petr"
         );
-        Consumer<String> consumer = System.out::println;
-        names.forEach(consumer);
-        names.forEach(System.out::println);
-        names.forEach(o -> System.out.println(o));
-
-        Consumer<String> out = (name) -> cutOut(name);
-        Consumer<String> outNew = RefMethod::cutOut;
-        names.forEach(outNew);
+        names.forEach(RefMethod::cutOut);
     }
 
     public static void cutOut(String value) {
