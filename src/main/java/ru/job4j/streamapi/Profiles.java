@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Profiles {
+    /*
+    //test
+     */
 
     public List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
