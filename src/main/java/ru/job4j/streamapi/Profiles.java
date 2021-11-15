@@ -11,9 +11,7 @@ public class Profiles {
                 .map(Profile::getAddress)
                 .collect(Collectors.toList());
     }
-    /*
-    //test
-     */
+
     public List<Address> sorted(List<Profile> profiles) {
         return collect(profiles).stream().
                 sorted(Comparator.comparing(Address::getCity))
