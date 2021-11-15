@@ -11,7 +11,7 @@ public class StudentMap {
                 Collectors.toMap(
                         Student::getSurname,
                         student -> student,
-                        (o1, o2) -> o1.getSurname().equals(o2.getSurname()) ? o1 : o2
+                        (o1, o2) -> o1
                 )
         );
     }
