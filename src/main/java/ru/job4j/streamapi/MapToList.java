@@ -7,6 +7,8 @@ import java.util.stream.Stream;
 
 public class MapToList {
     public List<Integer> mapToList(Integer[][] integers) {
-         return Arrays.stream(integers).flatMap(e -> Stream.of(e)).collect(Collectors.toList());
+         return Arrays.stream(integers)
+                 .flatMap(e -> Stream.of(e))
+                 .collect(Collectors.toList());
     }
 }
