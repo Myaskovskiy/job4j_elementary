@@ -1,15 +1,11 @@
 package ru.job4j.streamapi;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Card {
 
     private static Suit suit;
     private static Value value;
-    Set<CardString> cards = new HashSet<>();
 
     static class CardString {
         String suit;
@@ -23,12 +19,9 @@ public class Card {
         @Override
         public String toString() {
             return "CardString{"
-                    + "suit='"
-                    + suit
-                    + '\''
-                    + ", value='"
-                    + value
-                    + '\''
+                    + "suit='" + suit
+                    + '\'' + ", value='"
+                    + value + '\''
                     + '}';
         }
     }
@@ -39,17 +32,10 @@ public class Card {
     }
 
     public void sort() {
-        Stream.of(Suit.values())
-                .flatMap(su -> Stream.of(Value.values())
-                        .map(val -> su + " " + val))
-                .forEach(System.out::println);
-
-        this.cards = Stream.of(Suit.values())
+                Stream.of(Suit.values())
                 .flatMap(su -> Stream.of(Value.values())
                         .map(val -> new CardString(su.toString(), val.toString())))
-                .collect(Collectors.toSet());
-
-        cards.stream().forEach(System.out::println);
+                        .forEach(System.out::println);
     }
 
     public static void main(String[] args) {
