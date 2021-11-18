@@ -40,6 +40,14 @@ public class BankService {
         return null;
     }
 
+    /**
+     * @param srcPassport
+     * @param srcRequisite
+     * @param destPassport
+     * @param destRequisite
+     * @param amount
+     * @return
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean res = true;
