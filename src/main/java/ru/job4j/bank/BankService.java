@@ -40,33 +40,16 @@ public class BankService {
         return null;
     }
 
-    /**
-     * @param srcPassport
-     * @param srcRequisite
-     * @param destPassport
-     * @param destRequisite
-     * @param amount
-     * @return
-     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        boolean res = true;
-
-        User userOne = findByPassport(srcPassport);
-        User userTwo = findByPassport(destPassport);
-
+        boolean res = false;
         Account accOne = this.findByRequisite(srcPassport, srcRequisite);
         Account accTwo = this.findByRequisite(destPassport, destRequisite);
-        if (userOne == null || userTwo == null || accOne == null || accTwo == null) {
-            return false;
+        if (accOne != null && accTwo != null && accOne.getBalance() >= amount) {
+            this.findByRequisite(srcPassport, srcRequisite).setBalance(accOne.getBalance() - amount);
+            this.findByRequisite(destPassport, destRequisite).setBalance(accTwo.getBalance() + amount);
+            res = true;
         }
-        double amountAccOne = accOne.getBalance();
-        if (amountAccOne < amount) {
-            return false;
-        }
-        double amountAccTwo = accTwo.getBalance();
-        this.findByRequisite(srcPassport, srcRequisite).setBalance(amountAccOne - amount);
-        this.findByRequisite(destPassport, destRequisite).setBalance(amountAccTwo + amount);
         return res;
     }
 }
