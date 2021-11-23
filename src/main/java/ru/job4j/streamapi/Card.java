@@ -6,12 +6,15 @@ import java.util.stream.Stream;
 
 public class Card {
 
-    private static Suit suit;
-    private static Value value;
+    private Suit suit;
+    private Value value;
 
     public Card(Suit suit, Value value) {
         this.suit = suit;
         this.value = value;
+    }
+
+    public Card() {
     }
 
     @Override
@@ -22,23 +25,6 @@ public class Card {
                 + '}';
     }
 
-    public class CardString {
-         String suit;
-         String value;
-
-        public CardString(String suit, String value) {
-            this.suit = suit;
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return "CardString{" + "suit='"
-                    + suit + '\'' + ", value='"
-                    + value + '\'' + '}';
-        }
-    }
-
     public Set<Card> sort() {
        return  Stream.of(Suit.values())
                 .flatMap(su -> Stream.of(Value.values())
@@ -46,18 +32,9 @@ public class Card {
                  .collect(Collectors.toSet());
     }
 
-    public Set<CardString> sortNew() {
-        return  Stream.of(Suit.values())
-                .flatMap(su -> Stream.of(Value.values())
-                        .map(val -> new CardString(su.toString(), val.toString())))
-                .collect(Collectors.toSet());
-    }
-
     public static void main(String[] args) {
-        Card card = new Card(suit, value);
+        Card card = new Card();
         Set<Card> set = card.sort();
-        Set<CardString> set1 = card.sortNew();
         System.out.println(set);
-        System.out.println(set1);
     }
 }
