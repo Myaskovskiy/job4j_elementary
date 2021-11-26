@@ -41,30 +41,12 @@ public class Analyze {
                 .sum()))
                 .max(Comparator.comparing(Tuple::getScore))
                 .get();
-
     }
 
     public static Tuple bestSubject(Stream<Pupil> stream) {
-/**
- * оставил код для понимания, как тут все происходит внутри!
- *       List<Subject> subjects = stream
- *       .flatMap(e -> e.getSubjects()
- *       .stream())
- *       .collect(Collectors.toList());
- *       Set<Map.Entry<String, Double>> settuples = subjects
- *               .stream()
- *               .collect(Collectors.groupingBy(Subject::getName, Collectors.summingDouble(Subject::getScore)))
- *               .entrySet();
- *       List<Tuple> tuples = settuples
- *               .stream()
- *               .map(e -> new Tuple(e.getKey(), e.getValue()))
- *               .collect(Collectors.toList());
- *       Tuple tuple = tuples.stream().max(Comparator.comparing(Tuple::getScore))
- *               .get();
-*/
         return stream.flatMap(e -> e.getSubjects()
                 .stream())
-                .collect(Collectors.groupingBy(Subject::getName, Collectors.summingDouble(Subject::getScore)))
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.summingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(e -> new Tuple(e.getKey(), e.getValue()))
