@@ -24,24 +24,24 @@ public class BankService {
                 .findFirst();
     }
 
-    public Account findByRequisite(String passport, String requisite) {
+    public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> user = findByPassport(passport);
-        return user.map(value -> users.get(value)
+        return  user.map(value -> users.get(value)
                 .stream()
                 .filter(e -> e.getRequisite().equals(requisite))
                 .findFirst()
-                .get())
-                .orElse(null);
+                .get());
+
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean res = false;
-        Account accOne = this.findByRequisite(srcPassport, srcRequisite);
-        Account accTwo = this.findByRequisite(destPassport, destRequisite);
-        if (accOne != null && accTwo != null && accOne.getBalance() >= amount) {
-            this.findByRequisite(srcPassport, srcRequisite).setBalance(accOne.getBalance() - amount);
-            this.findByRequisite(destPassport, destRequisite).setBalance(accTwo.getBalance() + amount);
+        Optional<Account> accOne = this.findByRequisite(srcPassport, srcRequisite);
+        Optional<Account> accTwo = this.findByRequisite(destPassport, destRequisite);
+        if (accOne.isPresent() && accTwo.isPresent() && accOne.get().getBalance() >= amount) {
+            this.findByRequisite(srcPassport, srcRequisite).get().setBalance(accOne.get().getBalance() - amount);
+            this.findByRequisite(destPassport, destRequisite).get().setBalance(accTwo.get().getBalance() + amount);
             res = true;
         }
         return res;
